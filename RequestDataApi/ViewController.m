@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "RequestDataApi.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+}
+- (IBAction)Requset:(UIButton *)sender
+{
+    [[RequestDataApi shareRequestApi]requestWihtMethod:RequestMethodTypePost weatherData:@"http://www.kbwsc.com/ecmobile/?url=region" param:nil block:^(id jsonDict)
+    {
+        NSLog(@"jsonDict = ***** %@ *****",jsonDict);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
